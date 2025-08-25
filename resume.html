@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scheeza Portfolio</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+
+    <style>
+      body {
+        background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+        color: white;
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+      }
+
+      h2 {
+        color: #00aaff;
+      }
+
+      main {
+        padding-top: 150px;
+      }
+
+      /* ---------- Education Timeline ---------- */
+      .timeline {
+        position: relative;
+        margin: 50px auto;
+        padding: 20px 0;
+        width: 90%;
+      }
+
+      .timeline::after {
+        content: "";
+        position: absolute;
+        width: 3px;
+        background-color: #00aaff;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        margin-left: -1.5px;
+      }
+
+      .timeline-item {
+        padding: 20px 40px;
+        position: relative;
+        width: 50%;
+      }
+
+      .timeline-item.left {
+        left: 0;
+        text-align: right;
+      }
+      .timeline-item.right {
+        left: 50%;
+      }
+
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        right: -10px;
+        background-color: #111;
+        border: 3px solid #00aaff;
+        top: 30px;
+        border-radius: 50%;
+        z-index: 1;
+      }
+      .timeline-item.right::before {
+        left: -10px;
+      }
+
+      .timeline-item .card {
+        background: #111;
+        border-radius: 12px;
+        padding: 20px;
+        border: none;
+        color: white;
+        box-shadow: 0 4px 12px rgba(0, 170, 255, 0.3);
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .timeline-item .card:hover {
+        box-shadow: 0 8px 20px rgba(0, 170, 255, 0.6);
+        transform: scale(1.03);
+      }
+
+      .year-badge {
+        display: inline-block;
+        background: #00aaff;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        color: #fff;
+        margin-bottom: 10px;
+      }
+
+      @media screen and (max-width: 768px) {
+        .timeline::after {
+          left: 20px;
+        }
+        .timeline-item {
+          width: 100%;
+          padding-left: 60px;
+          padding-right: 25px;
+        }
+        .timeline-item.left,
+        .timeline-item.right {
+          left: 0;
+          text-align: left;
+        }
+        .timeline-item::before {
+          left: 8px;
+        }
+      }
+
+      .head {
+        font-weight: 600;
+        color: #00aaff;
+      }
+      .para {
+        font-weight: 500;
+      }
+
+      /* ---------- Skills Section ---------- */
+      .skills-container {
+        background: #111;
+        margin: 50px auto;
+        max-width: 1100px;
+        border-radius: 10px;
+        padding: 30px;
+        color: white;
+        box-shadow: 0 4px 12px rgba(0, 170, 255, 0.3);
+      }
+
+      .skills-container h2 {
+        color: #00aaff;
+        border-left: 4px solid #00aaff;
+        padding-left: 8px;
+        margin-bottom: 20px;
+      }
+
+      .section {
+        margin-bottom: 30px;
+      }
+
+      .skills .skill {
+        margin-bottom: 15px;
+      }
+      .skill span {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500;
+      }
+      .progress-bar {
+        width: 100%;
+        background: #333;
+        border-radius: 10px;
+        height: 8px;
+        overflow: hidden;
+      }
+      .progress {
+        height: 8px;
+        background: #00aaff;
+        width: 0;
+        transition: width 1s ease-in-out;
+      }
+
+      .tools,
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .tools span,
+      .tags span {
+        background: #1a1a1a;
+        color: #00aaff;
+        padding: 8px 15px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 500;
+        border: 1px solid #00aaff;
+        transition: all 0.3s;
+      }
+      .tools span:hover,
+      .tags span:hover {
+        background: #00aaff;
+        color: #fff;
+      }
+
+      .project-management {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+      }
+      .pm-card {
+        background: #1a1a1a;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 170, 255, 0.2);
+      }
+      .pm-card h3 {
+        margin-bottom: 10px;
+        font-size: 16px;
+        color: #00aaff;
+      }
+      .pm-card ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .pm-card ul li {
+        margin-bottom: 8px;
+        font-size: 14px;
+        color: #fff;
+      }
+
+      /* Animation Adjustments */
+      .shadow-drop-2-center {
+        -webkit-animation: shadow-drop-2-center 0.4s
+          cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        animation: shadow-drop-2-center 0.4s
+          cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+      }
+      @-webkit-keyframes shadow-drop-2-center {
+        0% {
+          -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+          -webkit-box-shadow: 0 0 0 0 rgba(0, 170, 255, 0);
+          box-shadow: 0 0 0 0 rgba(0, 170, 255, 0);
+        }
+        100% {
+          -webkit-transform: translateZ(50px);
+          transform: translateZ(50px);
+          -webkit-box-shadow: 0 0 20px 0px rgba(0, 170, 255, 0.6);
+          box-shadow: 0 0 20px 0px rgba(0, 170, 255, 0.6);
+        }
+      }
+      @keyframes shadow-drop-2-center {
+        0% {
+          -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+          -webkit-box-shadow: 0 0 0 0 rgba(0, 170, 255, 0);
+          box-shadow: 0 0 0 0 rgba(0, 170, 255, 0);
+        }
+        100% {
+          -webkit-transform: translateZ(50px);
+          transform: translateZ(50px);
+          -webkit-box-shadow: 0 0 20px 0px rgba(0, 170, 255, 0.6);
+          box-shadow: 0 0 20px 0px rgba(0, 170, 255, 0.6);
+        }
+      }
+
+      .shadow-animate {
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+      .shadow-animate:hover {
+        -webkit-animation: shadow-inset-center 0.4s
+          cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        animation: shadow-inset-center 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+          both;
+      }
+
+      @-webkit-keyframes shadow-inset-center {
+        0% {
+          -webkit-box-shadow: inset 0 0 0 0 rgba(0, 170, 255, 0);
+          box-shadow: inset 0 0 0 0 rgba(0, 170, 255, 0);
+        }
+        100% {
+          -webkit-box-shadow: inset 0 0 14px 0px rgba(0, 170, 255, 0.6);
+          box-shadow: inset 0 0 14px 0px rgba(0, 170, 255, 0.6);
+        }
+      }
+      @keyframes shadow-inset-center {
+        0% {
+          -webkit-box-shadow: inset 0 0 0 0 rgba(0, 170, 255, 0);
+          box-shadow: inset 0 0 0 0 rgba(0, 170, 255, 0);
+        }
+        100% {
+          -webkit-box-shadow: inset 0 0 14px 0px rgba(0, 170, 255, 0.6);
+          box-shadow: inset 0 0 14px 0px rgba(0, 170, 255, 0.6);
+        }
+      }
+      .resume-card {
+        background: #1a1a1a;
+        border-radius: 15px;
+        color: white;
+        box-shadow: 0 4px 12px rgba(0, 170, 255, 0.15); /* lighter blue effect */
+      }
+      .section-heading {
+        color: #ddd; /* Neutral instead of blue */
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 12px;
+      }
+      .info-grid div {
+        background: #111;
+        padding: 8px 10px;
+        border-radius: 6px;
+        font-size: 13px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        border: 1px solid #333; /* Removed heavy blue */
+        color: #ccc;
+      }
+      .social-links {
+        display: flex;
+        gap: 10px; /* Space between buttons */
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center; /* Centers horizontally */
+        gap: 10px; /* Space between buttons */
+        margin-top: 10px;
+      }
+
+      .social-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px; /* Square size */
+        height: 40px; /* Square size */
+        background-color: #00aaff; /* Blue color */
+        color: white;
+        border-radius: 8px; /* Slightly rounded */
+        font-size: 18px; /* Icon size */
+        transition: 0.3s ease;
+        text-decoration: none;
+      }
+
+      .social-btn:hover {
+        background-color: #0077b6; /* Darker blue on hover */
+        transform: scale(1.1); /* Slight zoom */
+      }
+
+      .btn-cv {
+        background-color: #00aaff;
+        color: #fff;
+        font-weight: 500;
+        padding: 8px 18px; /* smaller button */
+        border-radius: 6px;
+        font-size: 14px;
+        border: none;
+        box-shadow: 0 3px 8px rgba(0, 170, 255, 0.3);
+        transition: all 0.3s ease-in-out;
+      }
+      .btn-cv:hover {
+        background-color: #008ecc;
+        box-shadow: 0 6px 14px rgba(0, 170, 255, 0.5);
+        transform: scale(1.04);
+      }
+      .slide-top {
+        -webkit-animation: slide-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+          both;
+        animation: slide-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+      }
+
+      @-webkit-keyframes slide-top {
+        0% {
+          -webkit-transform: translateY(0);
+          transform: translateY(0);
+        }
+        100% {
+          -webkit-transform: translateY(-100px);
+          transform: translateY(-100px);
+        }
+      }
+      @keyframes slide-top {
+        0% {
+          -webkit-transform: translateY(0);
+          transform: translateY(0);
+        }
+        100% {
+          -webkit-transform: translateY(-100px);
+          transform: translateY(-100px);
+        }
+      }
+      .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(50px); /* start position */
+        transition: all 0.8s ease-out;
+      }
+
+      .animate-on-scroll.animate-active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+            /* FOOTER */
+      footer {
+        background: rgba(0, 0, 0, 0.9);
+        color: #ccc;
+        border-top: 1px solid #222;
+      }
+      footer .nav-link,
+      footer i {
+        color: #bbb;
+        transition: color 0.3s;
+      }
+      footer .nav-link:hover,
+      footer i:hover {
+        color: var(--accent);
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <nav
+      class="navbar navbar-expand-lg bg-dark fixed-top p-4 shadow"
+      style="box-shadow: 0 4px 10px rgba(0, 170, 255, 0.5)"
+    >
+      <a class="navbar-brand fw-bold ps-3 text-white" href="/">
+        Scheeza Ahmad
+        <span class="fw-normal" style="font-size: 16px; color: #00aaff">
+          / WEB DEVELOPER
+        </span>
+      </a>
+      <button
+        class="navbar-toggler bg-light"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#navbarOffcanvasLg"
+        aria-controls="navbarOffcanvasLg"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="offcanvas offcanvas-end bg-dark text-white"
+        tabindex="-1"
+        id="navbarOffcanvasLg"
+      >
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title">Menu</h5>
+          <button
+            type="button"
+            class="btn-close btn-close-white"
+            data-bs-dismiss="offcanvas"
+          ></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link text-white active fade-in" href="index.html"
+                >ABOUT ME</a
+              >
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link text-white fade-in" href="resume.html"
+                >RESUME</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white fade-in" href="projects.html"
+                >PROJECTS</a
+              >
+            </li>
+            <li class="nav-item fade-in">
+              <a class="nav-link text-white" href="contact.html">CONTACT</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <!-- Resume Section -->
+      <!-- Resume Section -->
+      <div class="container mb-5 animate-on-scroll">
+        <div class="resume-card p-4 shadow-drop-2-center shadow-animate">
+          <div class="row">
+            <!-- Name & Availability -->
+            <div class="col-12 text-center mb-4">
+              <span class="badge bg-primary mb-2">Available for Hire</span>
+              <h2 class="fw-bold text-white">SCHEEZA AHMAD</h2>
+            </div>
+
+            <!-- Info Section -->
+            <div class="col-12 mb-4">
+              <div class="info-grid">
+                <div class="shadow-drop-2-center">
+                  <i class="bi bi-geo-alt"></i> Lahore, Pakistan
+                </div>
+                <div class="shadow-drop-2-center">
+                  <i class="bi bi-translate"></i> English & Urdu
+                </div>
+                <div class="shadow-drop-2-center">
+                  <i class="bi bi-laptop"></i> Web Developer
+                </div>
+                <div class="shadow-drop-2-center">
+                  <i class="bi bi-building"></i> UCP University
+                </div>
+                <div class="shadow-drop-2-center">
+                  <i class="bi bi-star"></i> Passionate Coder
+                </div>
+              </div>
+            </div>
+
+            <!-- About Me -->
+            <div class="col-12 mb-4">
+              <h5 class="section-heading">About Me</h5>
+              <p>
+                I'm a passionate web developer specializing in creating
+                functional, responsive interfaces using React.js, Bootstrap, and
+                modern design principles. I focus on delivering exceptional user
+                experiences through clean and optimized code.
+              </p>
+              <p>
+                When I'm not coding, I explore design trends, work on creative
+                projects, and continuously learn new technologies.
+              </p>
+            </div>
+
+            <!-- Social Links -->
+            <div class="col-12 mb-3">
+              <h5 class="section-heading" style="text-align: center">
+                Connect
+              </h5>
+              <div class="social-links">
+                <a
+                  href="https://www.instagram.com/scheeza_ahmed/?next=%2F"
+                  class="social-btn"
+                  ><i class="bi bi-instagram"></i
+                ></a>
+                <a href="mailto:scheezaahmad117@gmail.com" class="social-btn">
+                  <i class="bi bi-envelope"></i>
+                </a>
+
+                <a href="https://github.com/Scheeza-Ahmad" class="social-btn"
+                  ><i class="bi bi-github"></i
+                ></a>
+              </div>
+            </div>
+
+            <!-- Download CV -->
+            <div class="col-12 text-center mt-3">
+              <button id="downloadCvBtn" class="btn btn-cv">
+                <i class="bi bi-download"></i> Download CV
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Education Timeline -->
+      <div class="container">
+        <h2 class="fw-bold text-uppercase mb-5 text-center animate-on-scroll">
+          — Education Journey —
+        </h2>
+        <div class="timeline animate-on-scroll">
+          <div class="timeline-item left">
+            <div class="card slide-top shadow-animate">
+              <span class="year-badge shadow-drop-2-center">2019 - 2021</span>
+              <h5 class="head">Matriculation</h5>
+              <p class="text-muted mb-1 para">Crescent Model School</p>
+              <p>Completed with Science stream</p>
+              <p>Scored 1042/1100</p>
+            </div>
+          </div>
+          <div class="timeline-item right">
+            <div class="card slide-top shadow-animate">
+              <span class="year-badge shadow-drop-2-center">2021 - 2023</span>
+              <h5 class="head">Intermediate</h5>
+              <p class="text-muted mb-1">Punjab College for Women</p>
+              <p>Specialized in Pre-Medical with high distinction</p>
+              <p>Scored 1016/1100</p>
+            </div>
+          </div>
+          <div class="timeline-item left">
+            <div class="card slide-top shadow-animate">
+              <span class="year-badge shadow-drop-2-center">2023 - 2027</span>
+              <h5 class="head">Bachelor’s Degree</h5>
+              <p class="text-muted mb-1">University Of Central Punjab</p>
+              <p>Computer Science</p>
+              <p>CGPA 3.58 GPA 3.85</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skills Section -->
+      <h2 class="fw-bold text-uppercase mb-5 text-center animate-on-scroll">
+        — SKILLS —
+      </h2>
+      <div
+        class="skills-container shadow-drop-2-center shadow-animate animate-on-scroll"
+      >
+        <div class="section skills">
+          <h2>Technical Proficiency</h2>
+          <div class="skill">
+            <span>HTML - 99%</span>
+            <div class="progress-bar">
+              <div class="progress" data-progress="99"></div>
+            </div>
+          </div>
+          <div class="skill">
+            <span>CSS - 90%</span>
+            <div class="progress-bar">
+              <div class="progress" data-progress="90"></div>
+            </div>
+          </div>
+          <div class="skill">
+            <span>JavaScript - 85%</span>
+            <div class="progress-bar">
+              <div class="progress" data-progress="85"></div>
+            </div>
+          </div>
+          <div class="skill">
+            <span>Bootstrap - 80%</span>
+            <div class="progress-bar">
+              <div class="progress" data-progress="80"></div>
+            </div>
+          </div>
+          <div class="skill">
+            <span>React.js - 90%</span>
+            <div class="progress-bar">
+              <div class="progress" data-progress="90"></div>
+            </div>
+          </div>
+
+          <div class="skill">
+            <span>TailwindCSS - 75%</span>
+            <div class="progress-bar">
+              <div class="progress" data-progress="75"></div>
+            </div>
+          </div>
+          <div class="skill">
+            <span>NextJS - 30%</span>
+            <div class="progress-bar">
+              <div class="progress" data-progress="30"></div>
+            </div>
+          </div>
+          <div class="skill">
+            <span>Node.js - 10%</span>
+            <div class="progress-bar">
+              <div class="progress" data-progress="10"></div>
+            </div>
+          </div>
+          <div class="skill">
+            <span>Git - 80%</span>
+            <div class="progress-bar">
+              <div class="progress" data-progress="80"></div>
+            </div>
+          </div>
+          <div class="skill">
+            <span>UI/UX Design - 95%</span>
+            <div class="progress-bar">
+              <div class="progress" data-progress="95"></div>
+            </div>
+          </div>
+          <div class="skill">
+            <span>Figma - 90%</span>
+            <div class="progress-bar">
+              <div class="progress" data-progress="90"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>Tools & Technologies</h2>
+          <div class="tools">
+            <span>React</span><span>TailwindCSS</span><span>Node.js</span
+            ><span>Styled Components</span><span>Git</span><span>Figma</span>
+            <span>Webpack</span>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>Methodologies & Approaches</h2>
+          <div class="tags">
+            <span>Responsive Design</span><span>Mobile-First Approach</span>
+            <span>Component-Based Architecture</span><span>REST APIs</span>
+            <span>UX Research</span>
+            <span>Performance Optimization</span>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- FOOTER -->
+    <footer class="py-4 mt-5">
+      <div class="container">
+        <ul class="nav justify-content-center pb-3 mb-2">
+          <li class="nav-item">
+            <a href="./index.html" class="nav-link px-2 fade-in">About</a>
+          </li>
+          <li class="nav-item">
+            <a href="./contact.html" class="nav-link px-2 fade-in">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a href="./projects.html" class="nav-link px-2 fade-in">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a href="./resume.html" class="nav-link px-2 fade-in">Resume</a>
+          </li>
+        </ul>
+        <p class="text-center fade-in mb-2">© 2025 Scheeza Ahmad</p>
+        <ul class="nav justify-content-center list-unstyled d-flex">
+          <li class="ms-3">
+            <a
+              href="https://www.instagram.com/scheeza_ahmed/?next=%2F"
+              aria-label="Instagram"
+              ><i class="bi bi-instagram fade-in" style="font-size: 18px"></i
+            ></a>
+          </li>
+          <li class="ms-3">
+            <a href="https://github.com/Scheeza-Ahmad" aria-label="Facebook"
+              ><i class="bi bi-github fade-in" style="font-size: 18px"></i
+            ></a>
+          </li>
+          <li class="ms-3">
+            <a
+              href="https://www.linkedin.com/in/scheeza-ahmad-19a650380/"
+              aria-label="linkedin"
+              ><i class="bi bi-linkedin fade-in" style="font-size: 18px"></i
+            ></a>
+          </li>
+        </ul>
+        <p
+          class="text-center fade-in"
+          style="font-size: 16px; font-weight: 500"
+        >
+          📞 0340 8700002
+        </p>
+      </div>
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const skillsSection = document.querySelector(".skills-container");
+        const progressBars = document.querySelectorAll(".progress");
+        const animatedElements =
+          document.querySelectorAll(".animate-on-scroll");
+
+        const options = { root: null, threshold: 0.2 };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("animate-active");
+
+              // Progress bar animation
+              if (entry.target.classList.contains("skills-container")) {
+                progressBars.forEach((bar) => {
+                  const value = bar.getAttribute("data-progress");
+                  bar.style.width = value + "%";
+                });
+              }
+
+              observer.unobserve(entry.target);
+            }
+          });
+        }, options);
+
+        animatedElements.forEach((el) => observer.observe(el));
+        observer.observe(skillsSection);
+      });
+
+      document.getElementById("downloadCvBtn").addEventListener("click", () => {
+        const link = document.createElement("a");
+        link.href = "assets/ScheezaAhmad.pdf"; // Relative path to your PDF
+
+        link.download = "Scheeza_Ahmad_CV.pdf";
+        link.click();
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

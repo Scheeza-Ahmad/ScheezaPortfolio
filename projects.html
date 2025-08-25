@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scheeza Portfolio - Projects</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+    <style>
+      body {
+        background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+        color: white;
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+      }
+      h2 {
+        color: #00aaff;
+      }
+      main {
+        padding-top: 150px;
+      }
+
+      /* Project Section */
+      .projects-section {
+        max-width: 2000px;
+        margin: auto;
+        padding: 20px;
+      }
+      .project-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+      }
+      .project-card {
+        background: #111;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 170, 255, 0.3);
+        overflow: hidden;
+        transform: translateY(50px);
+        opacity: 0;
+        transition: all 0.8s ease;
+      }
+      .project-card.animate-active {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      .project-card img {
+        width: 100%;
+        height: 180px;
+        object-fit: contain;
+        background-color: #000;
+      }
+
+      .project-card-body {
+        padding: 15px;
+      }
+      .project-card h4 {
+        color: #00aaff;
+        font-size: 18px;
+        margin-bottom: 8px;
+      }
+      .project-card p {
+        font-size: 14px;
+        color: #ccc;
+      }
+      .project-links {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+      }
+      .project-links a {
+        background: #00aaff;
+        color: #fff;
+        padding: 6px 10px;
+        border-radius: 6px;
+        font-size: 14px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+      .project-links a:hover {
+        background: #008ecc;
+        transform: scale(1.05);
+      }
+
+      /* Animation base */
+      .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.8s ease;
+      }
+      .animate-active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      /* FOOTER */
+      footer {
+        background: rgba(0, 0, 0, 0.9);
+        color: #ccc;
+        border-top: 1px solid #222;
+      }
+      footer .nav-link,
+      footer i {
+        color: #bbb;
+        transition: color 0.3s;
+      }
+      footer .nav-link:hover,
+      footer i:hover {
+        color: var(--accent);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav
+      class="navbar navbar-expand-lg bg-dark fixed-top p-4 shadow"
+      style="box-shadow: 0 4px 10px rgba(0, 170, 255, 0.5)"
+    >
+      <a class="navbar-brand fw-bold ps-3 text-white" href="index.html">
+        Scheeza Ahmad
+        <span class="fw-normal" style="font-size: 16px; color: #00aaff">
+          / WEB DEVELOPER</span
+        >
+      </a>
+      <button
+        class="navbar-toggler bg-light"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#navbarOffcanvasLg"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="offcanvas offcanvas-end bg-dark text-white"
+        tabindex="-1"
+        id="navbarOffcanvasLg"
+      >
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title">Menu</h5>
+          <button
+            type="button"
+            class="btn-close btn-close-white"
+            data-bs-dismiss="offcanvas"
+          ></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link text-white" href="index.html">ABOUT ME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="resume.html">RESUME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white active" href="projects.html"
+                >PROJECTS</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="contact.html">CONTACT</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <div class="projects-section">
+        <h2 class="fw-bold text-uppercase mb-5 text-center animate-on-scroll">
+          — My Projects —
+        </h2>
+
+        <!-- Section 1: HTML/CSS & Bootstrap Projects -->
+        <h3 class="text-center mb-4 text-info animate-on-scroll">
+          HTML, CSS & Bootstrap Projects
+        </h3>
+        <div class="project-grid mb-5">
+          <!-- Project Card -->
+          <div class="project-card">
+            <img src="images/portfolio.png" alt="Portfolio Website" />
+            <div class="project-card-body">
+              <h4>Portfolio Website</h4>
+              <p>
+                A responsive portfolio built with HTML, CSS, and Bootstrap
+                showcasing my skills and projects.
+              </p>
+              <div class="project-links">
+                <a href="#">Live Demo</a>
+                <a href="https://github.com/Scheeza-Ahmad/ScheezaPortfolio"
+                  >View Code</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="project-card">
+            <img src="images/ggogle.png" alt="Google Website Clone" />
+            <div class="project-card-body">
+              <h4>Discord Clone</h4>
+              <p>
+                A responsive portfolio built with HTML, CSS, and Bootstrap
+                showcasing my skills and projects.
+              </p>
+              <div class="project-links">
+                <a href="https://github.com/Scheeza-Ahmad/Google-Clone"
+                  >View Code</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="project-card">
+            <img src="images/discord.png" alt="Discord Website Clone" />
+            <div class="project-card-body">
+              <h4>Discord Clone</h4>
+              <p>
+                A responsive portfolio built with HTML, CSS, and Bootstrap
+                showcasing my skills and projects.
+              </p>
+              <div class="project-links">
+                <a href="https://github.com/Scheeza-Ahmad/Discord-Clone"
+                  >View Code</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="project-card">
+            <img src="images/amazon.png" alt="Amazon Website Clone" />
+            <div class="project-card-body">
+              <h4>Amazon Clone</h4>
+              <p>
+                A responsive portfolio built with HTML, CSS, and Bootstrap
+                showcasing my skills and projects.
+              </p>
+              <div class="project-links">
+                <a href="https://github.com/Scheeza-Ahmad/Amazon-Clone"
+                  >View Code</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <img src="images/Tourist.png" alt="WanderWhirl" />
+            <div class="project-card-body">
+              <h4>WanderWhirl</h4>
+              <p>
+                A Bootstrap-based e-commerce website clone with responsive
+                layout and modern UI.
+              </p>
+              <div class="project-links">
+                <a href="https://github.com/Scheeza-Ahmad/Wander-Whirl"
+                  >View Code</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <img src="images/ecommerce.png" alt="Ecommerce Website" />
+            <div class="project-card-body">
+              <h4>Eccomerce Website</h4>
+              <p>
+                A Bootstrap-based e-commerce website clone with responsive
+                layout and modern UI.
+              </p>
+              <div class="project-links">
+                <a href="https://github.com/Scheeza-Ahmad/Tech-Start"
+                  >View Code</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 2: JavaScript Projects -->
+        <h3 class="text-center mb-4 text-info animate-on-scroll">
+          JavaScript Projects
+        </h3>
+        <div class="project-grid mb-5">
+          <div class="project-card">
+            <img
+              src="images/library.png"
+              alt="Console Based Library Management System"
+            />
+            <div class="project-card-body">
+              <h4>Library</h4>
+              <p>
+                A JavaScript weather app fetching real-time data from an API
+                with dynamic UI updates.
+              </p>
+              <div class="project-links">
+                <a
+                  href="https://github.com/Scheeza-Ahmad/Library-Management-System"
+                  >View Code</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="project-card">
+            <img
+              src="images/student.png"
+              alt="Console Based Student Grading System"
+            />
+            <div class="project-card-body">
+              <h4><samp>Console Based Student Grading System</samp></h4>
+              <p>
+                A JavaScript weather app fetching real-time data from an API
+                with dynamic UI updates.
+              </p>
+              <div class="project-links">
+                <a
+                  href="https://github.com/Scheeza-Ahmad/Student-Grading-System"
+                  >View Code</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="project-card">
+            <img src="images/tickcross.png" alt="T" />
+            <div class="project-card-body">
+              <h4>TickTackToe Game</h4>
+              <p>
+                A JavaScript weather app fetching real-time data from an API
+                with dynamic UI updates.
+              </p>
+              <div class="project-links">
+                <a href="https://github.com/Scheeza-Ahmad/Tick-Tack-Toe-Game"
+                  >View Code</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <img src="images/stonepaperscissor.png" alt="To-Do App" />
+            <div class="project-card-body">
+              <h4>Stone Paper Scissors Game</h4>
+              <p>
+                A simple task manager built using Vanilla JS with local storage
+                support.
+              </p>
+              <div class="project-links">
+                <a
+                  href="https://github.com/Scheeza-Ahmad/Stone-Paper-Scissors-Game"
+                  >View Code</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="project-card">
+            <img src="images/calculator.png" alt="To-Do App" />
+            <div class="project-card-body">
+              <h4>calculator</h4>
+              <p>
+                A simple task manager built using Vanilla JS with local storage
+                support.
+              </p>
+              <div class="project-links">
+                <a href="https://github.com/Scheeza-Ahmad/Calculator"
+                  >View Code</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="project-card">
+            <img src="images/cat.png" alt="To-Do App" />
+            <div class="project-card-body">
+              <h4>Cat Image Creator</h4>
+              <p>
+                A simple task manager built using Vanilla JS with local storage
+                support.
+              </p>
+              <div class="project-links">
+                <a href="https://github.com/Scheeza-Ahmad/CatImageCreator"
+                  >View Code</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 3: React Projects -->
+        <h3 class="text-center mb-4 text-info animate-on-scroll">
+          React Projects
+        </h3>
+        <div class="project-grid">
+          <div class="project-card">
+            <img src="images/profile.png" alt="React Blog App" />
+            <div class="project-card-body">
+              <h4>Profile</h4>
+              <p>
+                A blog application with routing and state management using React
+                Context API.
+              </p>
+              <div class="project-links">
+                <a href="https://github.com/Scheeza-Ahmad/Profile-MiniProject"
+                  >View Code</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="project-card">
+            <img src="images/trendhive.png" alt="React Dashboard" />
+            <div class="project-card-body">
+              <h4>Trend Hive</h4>
+              <p>
+                An interactive admin dashboard built using React.js and Chart.js
+                for data visualization.
+              </p>
+              <div class="project-links">
+                <a href="https://github.com/Scheeza-Ahmad/TrendHive-react-jsx-"
+                  >View Code</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <img src="images/inventory.png" alt="React Blog App" />
+            <div class="project-card-body">
+              <h4>inventory</h4>
+              <p>
+                A blog application with routing and state management using React
+                Context API.
+              </p>
+              <div class="project-links">
+                <a href="https://github.com/Scheeza-Ahmad/Fresh-Track-Inventory"
+                  >View Code</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <img src="images/techstart.png" alt="Tech Start" />
+            <div class="project-card-body">
+              <h4>Tech Start</h4>
+              <p>
+                A blog application with routing and state management using React
+                Context API.
+              </p>
+              <div class="project-links">
+                <a href="https://github.com/Scheeza-Ahmad/TechStart"
+                  >View Code</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <h3 class="text-center  mt-5 text-info animate-on-scroll">
+          Still Coding ....👩‍💻💻⌨️
+        </h3>
+      </div>
+    </main>
+    <!-- FOOTER -->
+    <footer class="py-4 mt-5">
+      <div class="container">
+        <ul class="nav justify-content-center pb-3 mb-2">
+          <li class="nav-item">
+            <a href="./index.html" class="nav-link px-2 fade-in">About</a>
+          </li>
+          <li class="nav-item">
+            <a href="./contact.html" class="nav-link px-2 fade-in">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a href="./projects.html" class="nav-link px-2 fade-in">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a href="./resume.html" class="nav-link px-2 fade-in">Resume</a>
+          </li>
+        </ul>
+        <p class="text-center fade-in mb-2">© 2025 Scheeza Ahmad</p>
+        <ul class="nav justify-content-center list-unstyled d-flex">
+          <li class="ms-3">
+            <a
+              href="https://www.instagram.com/scheeza_ahmed/?next=%2F"
+              aria-label="Instagram"
+              ><i class="bi bi-instagram fade-in" style="font-size: 18px"></i
+            ></a>
+          </li>
+          <li class="ms-3">
+            <a href="https://github.com/Scheeza-Ahmad" aria-label="Facebook"
+              ><i class="bi bi-github fade-in" style="font-size: 18px"></i
+            ></a>
+          </li>
+          <li class="ms-3">
+            <a
+              href="https://www.linkedin.com/in/scheeza-ahmad-19a650380/"
+              aria-label="linkedin"
+              ><i class="bi bi-linkedin fade-in" style="font-size: 18px"></i
+            ></a>
+          </li>
+        </ul>
+        <p
+          class="text-center fade-in"
+          style="font-size: 16px; font-weight: 500"
+        >
+          📞 0340 8700002
+        </p>
+      </div>
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const animatedElements = document.querySelectorAll(
+          ".animate-on-scroll, .project-card"
+        );
+        const options = { root: null, threshold: 0.2 };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("animate-active");
+            }
+          });
+        }, options);
+
+        animatedElements.forEach((el) => observer.observe(el));
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

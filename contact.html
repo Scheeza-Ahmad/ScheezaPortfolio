@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Scheeza Ahmad</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <style>
+      :root {
+        --bg1: #0d0d0d;
+        --bg2: #1a1a1a;
+        --panel: #1e1e1e;
+        --text: #eaeaea;
+        --muted: #bdbdbd;
+        --accent: #00aaff;
+      }
+
+      /* THEME */
+      body {
+        background: linear-gradient(135deg, var(--bg1), var(--bg2));
+        color: var(--text);
+      }
+      nav.navbar {
+        background: rgba(0, 0, 0, 0.95);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+      }
+
+      .navbar-brand {
+        font-size: 22px;
+        color: #ffffff !important;
+      }
+
+      .navbar-nav .nav-link {
+        color: #ffffff;
+        font-weight: 500;
+        margin-left: 10px;
+        transition: color 0.3s ease;
+      }
+
+      .navbar-nav .nav-link:hover,
+      .navbar-nav .nav-link.active {
+        color: #00aaff;
+        text-shadow: 0 0 10px rgba(0, 170, 255, 0.7);
+      }
+
+      main section {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 120px 15px 40px;
+      }
+
+      /* CARD / FORM WRAPPER */
+      .contact-wrap {
+        background: rgba(30, 30, 30, 0.95);
+        border-radius: 12px;
+        padding: 30px;
+        max-width: 520px;
+        width: 100%;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+      }
+
+      h2 {
+        font-size: 28px;
+        margin-bottom: 20px;
+      }
+      h2 .dot {
+        color: var(--accent);
+        font-weight: 800;
+      }
+
+      /* FORM */
+      .form-control {
+        background: #121212;
+        border: 1px solid #333;
+        color: var(--text);
+        border-radius: 8px;
+        padding: 12px;
+        transition: 0.3s;
+      }
+      .form-control::placeholder {
+        color: #888;
+      }
+      .form-control:focus {
+        background: #1c1c1c;
+        border-color: var(--accent);
+        box-shadow: 0 0 10px rgba(0, 170, 255, 0.35);
+        color: #fff;
+      }
+      textarea.form-control {
+        resize: none;
+      }
+
+      /* BUTTON */
+      .btn-accent {
+        background: var(--accent);
+        color: #fff;
+        border: none;
+        padding: 12px 20px;
+        font-size: 16px;
+        font-weight: 600;
+        border-radius: 25px;
+        transition: all 0.3s;
+      }
+      .btn-accent:hover {
+        background: transparent;
+        color: var(--accent);
+        border: 2px solid var(--accent);
+      }
+
+      /* FOOTER */
+      footer {
+        background: rgba(0, 0, 0, 0.9);
+        color: #ccc;
+        border-top: 1px solid #222;
+      }
+      footer .nav-link,
+      footer i {
+        color: #bbb;
+        transition: color 0.3s;
+      }
+      footer .nav-link:hover,
+      footer i:hover {
+        color: var(--accent);
+      }
+
+      /* ===== Your ORIGINAL animations (restored) ===== */
+      .scale-up-tl {
+        -webkit-animation: scale-up-tl 0.4s cubic-bezier(0.39, 0.575, 0.565, 1)
+          both;
+        animation: scale-up-tl 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+      }
+      .tracking-in-expand-fwd {
+        -webkit-animation: tracking-in-expand-fwd 0.8s
+          cubic-bezier(0.215, 0.61, 0.355, 1) both;
+        animation: tracking-in-expand-fwd 0.8s
+          cubic-bezier(0.215, 0.61, 0.355, 1) both;
+      }
+      .shadow-drop-2-center {
+        -webkit-animation: shadow-drop-2-center 0.4s
+          cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        animation: shadow-drop-2-center 0.4s
+          cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+      }
+
+      /* From your home page (also restored so nothing is “missing”) */
+      .text-shadow-drop-center {
+        -webkit-animation: text-shadow-drop-center 0.6s both;
+        animation: text-shadow-drop-center 0.6s both;
+      }
+      .shadow-inset-center {
+        -webkit-animation: shadow-inset-center 0.4s
+          cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        animation: shadow-inset-center 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+          both;
+      }
+      .fade-in {
+        -webkit-animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+        animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+      }
+
+      /* KEYFRAMES (exact names preserved) */
+      @-webkit-keyframes scale-up-tl {
+        0% {
+          -webkit-transform: scale(0.5);
+          transform: scale(0.5);
+          -webkit-transform-origin: top left;
+          transform-origin: top left;
+        }
+        100% {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+          -webkit-transform-origin: top left;
+          transform-origin: top left;
+        }
+      }
+      @keyframes scale-up-tl {
+        0% {
+          transform: scale(0.5);
+          transform-origin: top left;
+        }
+        100% {
+          transform: scale(1);
+          transform-origin: top left;
+        }
+      }
+
+      @-webkit-keyframes tracking-in-expand-fwd {
+        0% {
+          letter-spacing: -0.5em;
+          -webkit-transform: translateZ(-700px);
+          transform: translateZ(-700px);
+          opacity: 0;
+        }
+        40% {
+          opacity: 0.6;
+        }
+        100% {
+          -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+          opacity: 1;
+        }
+      }
+      @keyframes tracking-in-expand-fwd {
+        0% {
+          letter-spacing: -0.5em;
+          transform: translateZ(-700px);
+          opacity: 0;
+        }
+        40% {
+          opacity: 0.6;
+        }
+        100% {
+          transform: translateZ(0);
+          opacity: 1;
+        }
+      }
+
+      @-webkit-keyframes shadow-drop-2-center {
+        0% {
+          -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+          -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+          box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+        }
+        100% {
+          -webkit-transform: translateZ(50px);
+          transform: translateZ(50px);
+          -webkit-box-shadow: 0 0 20px 0 #00aaff;
+          box-shadow: 0 0 20px 0 #00aaff;
+        }
+      }
+      @keyframes shadow-drop-2-center {
+        0% {
+          transform: translateZ(0);
+          box-shadow: 0 0 0 0 #00aaff;
+        }
+        100% {
+          transform: translateZ(50px);
+          box-shadow: 0 0 20px 0 #00aaff;
+        }
+      }
+      .shadow-drop-2-center {
+        animation: shadow-drop-2-center 0.4s
+          cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+      }
+
+      .contact-wrap.animate {
+        box-shadow: 0 0 25px 0 #00aaff; /* Blue glow stays after animation */
+      }
+
+      @-webkit-keyframes text-shadow-drop-center {
+        0% {
+          text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+        }
+        100% {
+          text-shadow: 0 0 18px rgba(0, 0, 0, 0.35);
+        }
+      }
+      @keyframes text-shadow-drop-center {
+        0% {
+          text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+        }
+        100% {
+          text-shadow: 0 0 18px rgba(0, 0, 0, 0.35);
+        }
+      }
+
+      @-webkit-keyframes shadow-inset-center {
+        0% {
+          -webkit-box-shadow: inset 0 0 0 0 rgba(0, 0, 0, 0);
+          box-shadow: inset 0 0 0 0 rgba(0, 0, 0, 0);
+        }
+        100% {
+          -webkit-box-shadow: inset 0 0 14px 0 rgba(0, 0, 0, 0.5);
+          box-shadow: inset 0 0 14px 0 rgba(0, 0, 0, 0.5);
+        }
+      }
+      @keyframes shadow-inset-center {
+        0% {
+          box-shadow: inset 0 0 0 0 rgba(0, 0, 0, 0);
+        }
+        100% {
+          box-shadow: inset 0 0 14px 0 rgba(0, 0, 0, 0.5);
+        }
+      }
+
+      @-webkit-keyframes fade-in {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      @keyframes fade-in {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg fixed-top p-4">
+      <a class="navbar-brand fw-bold ps-3" href="/">
+        Scheeza Ahmad
+        <span class="fw-normal" style="font-size: 16px"> / WEB DEVELOPER</span>
+      </a>
+      <button
+        class="navbar-toggler bg-light"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#navbarOffcanvasLg"
+        aria-controls="navbarOffcanvasLg"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="offcanvas offcanvas-end bg-dark text-white"
+        tabindex="-1"
+        id="navbarOffcanvasLg"
+      >
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title">Menu</h5>
+          <button
+            type="button"
+            class="btn-close btn-close-white"
+            data-bs-dismiss="offcanvas"
+          ></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">ABOUT ME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="resume.html">RESUME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="projects.html">PROJECTS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">CONTACT</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- CONTACT -->
+    <main>
+      <section>
+        <div
+          class="contact-wrap shadow-drop-2-center shadow-inset-center fade-in"
+        >
+          <h2 class="tracking-in-expand-fwd text-shadow-drop-center">
+            <span class="dot">■</span> Let's Talk
+          </h2>
+
+          <form class="scale-up-tl">
+            <div class="row g-3 mb-3">
+              <div class="col-12 col-md-6">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="First Name *"
+                  required
+                />
+              </div>
+              <div class="col-12 col-md-6">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Last Name *"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <input
+                type="email"
+                class="form-control"
+                placeholder="Email *"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Subject *"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <textarea
+                class="form-control"
+                rows="4"
+                placeholder="Your Message *"
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-accent w-100">Send</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="py-4 mt-5">
+      <div class="container">
+        <ul class="nav justify-content-center pb-3 mb-2">
+          <li class="nav-item">
+            <a href="./index.html" class="nav-link px-2 fade-in">About</a>
+          </li>
+          <li class="nav-item">
+            <a href="./contact.html" class="nav-link px-2 fade-in">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a href="./projects.html" class="nav-link px-2 fade-in">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a href="./resume.html" class="nav-link px-2 fade-in">Resume</a>
+          </li>
+        </ul>
+        <p class="text-center fade-in mb-2">© 2025 Scheeza Ahmad</p>
+        <ul class="nav justify-content-center list-unstyled d-flex">
+          <li class="ms-3">
+            <a
+              href="https://www.instagram.com/scheeza_ahmed/?next=%2F"
+              aria-label="Instagram"
+              ><i class="bi bi-instagram fade-in" style="font-size: 18px"></i
+            ></a>
+          </li>
+          <li class="ms-3">
+            <a href="https://github.com/Scheeza-Ahmad" aria-label="Facebook"
+              ><i class="bi bi-github fade-in" style="font-size: 18px"></i
+            ></a>
+          </li>
+          <li class="ms-3">
+            <a
+              href="https://www.linkedin.com/in/scheeza-ahmad-19a650380/"
+              aria-label="linkedin"
+              ><i class="bi bi-linkedin fade-in" style="font-size: 18px"></i
+            ></a>
+          </li>
+        </ul>
+        <p
+          class="text-center fade-in"
+          style="font-size: 16px; font-weight: 500"
+        >
+          📞 0340 8700002
+        </p>
+      </div>
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const animatedElements = document.querySelectorAll(
+          ".fade-in, .scale-up-tl, .tracking-in-expand-fwd, .shadow-drop-2-center, .shadow-inset-center, .text-shadow-drop-center"
+        );
+
+        // Remove animation classes initially
+        animatedElements.forEach((el) => {
+          el.classList.add("invisible"); // add invisible style
+        });
+
+        const observer = new IntersectionObserver(
+          (entries, observer) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.remove("invisible"); // show
+                entry.target.classList.add("animate"); // custom trigger class
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.2 }
+        );
+
+        animatedElements.forEach((el) => observer.observe(el));
+      });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
