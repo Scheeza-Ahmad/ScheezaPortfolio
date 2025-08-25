@@ -20,6 +20,33 @@
         font-family: "Poppins", sans-serif;
         margin: 0;
       }
+      nav.navbar {
+        background: rgba(0, 0, 0, 0.95);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+      }
+
+      .navbar-brand {
+        font-size: 18px;
+        white-space: normal; /* allows breaking into two lines */
+        line-height: 1.2;
+        color: #ffffff !important;
+      }
+      .navbar-toggler {
+        border: none;
+      }
+
+      .navbar-nav .nav-link {
+        color: #ffffff;
+        font-weight: 500;
+        margin-left: 10px;
+        transition: color 0.3s ease;
+      }
+
+      .navbar-nav .nav-link:hover,
+      .navbar-nav .nav-link.active {
+        color: #00aaff;
+        text-shadow: 0 0 10px rgba(0, 170, 255, 0.7);
+      }
 
       h2 {
         color: #00aaff;
@@ -401,7 +428,7 @@
         opacity: 1;
         transform: translateY(0);
       }
-            /* FOOTER */
+      /* FOOTER */
       footer {
         background: rgba(0, 0, 0, 0.9);
         color: #ccc;
@@ -416,31 +443,32 @@
       footer i:hover {
         color: var(--accent);
       }
-
-
     </style>
   </head>
   <body>
-    <nav
-      class="navbar navbar-expand-lg bg-dark fixed-top p-4 shadow"
-      style="box-shadow: 0 4px 10px rgba(0, 170, 255, 0.5)"
-    >
-      <a class="navbar-brand fw-bold ps-3 text-white" href="/">
-        Scheeza Ahmad
-        <span class="fw-normal" style="font-size: 16px; color: #00aaff">
-          / WEB DEVELOPER
-        </span>
-      </a>
-      <button
-        class="navbar-toggler bg-light"
-        type="button"
-        data-bs-toggle="offcanvas"
-        data-bs-target="#navbarOffcanvasLg"
-        aria-controls="navbarOffcanvasLg"
-        aria-label="Toggle navigation"
+    <nav class="navbar navbar-expand-lg fixed-top p-3">
+      <div
+        class="container-fluid d-flex justify-content-between align-items-center"
       >
-        <span class="navbar-toggler-icon"></span>
-      </button>
+        <!-- Brand -->
+        <a class="navbar-brand fw-bold mb-0" href="/" style="line-height: 1.2">
+          Scheeza Ahmad<br />
+          <span class="fw-normal" style="font-size: 14px">/ WEB DEVELOPER</span>
+        </a>
+
+        <!-- Hamburger -->
+        <button
+          class="navbar-toggler bg-light"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#navbarOffcanvasLg"
+          aria-controls="navbarOffcanvasLg"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+
+      <!-- Offcanvas Menu -->
       <div
         class="offcanvas offcanvas-end bg-dark text-white"
         tabindex="-1"
@@ -457,23 +485,16 @@
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
             <li class="nav-item">
-              <a class="nav-link text-white active fade-in" href="index.html"
-                >ABOUT ME</a
-              >
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link text-white fade-in" href="resume.html"
-                >RESUME</a
-              >
+              <a class="nav-link active" href="index.html">ABOUT ME</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white fade-in" href="projects.html"
-                >PROJECTS</a
-              >
+              <a class="nav-link" href="resume.html">RESUME</a>
             </li>
-            <li class="nav-item fade-in">
-              <a class="nav-link text-white" href="contact.html">CONTACT</a>
+            <li class="nav-item">
+              <a class="nav-link" href="projects.html">PROJECTS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">CONTACT</a>
             </li>
           </ul>
         </div>
@@ -742,6 +763,7 @@
     </footer>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
+        // ✅ Skills & Animation Observer
         const skillsSection = document.querySelector(".skills-container");
         const progressBars = document.querySelectorAll(".progress");
         const animatedElements =
@@ -754,7 +776,7 @@
             if (entry.isIntersecting) {
               entry.target.classList.add("animate-active");
 
-              // Progress bar animation
+              // ✅ Progress Bar Animation
               if (entry.target.classList.contains("skills-container")) {
                 progressBars.forEach((bar) => {
                   const value = bar.getAttribute("data-progress");
@@ -768,15 +790,36 @@
         }, options);
 
         animatedElements.forEach((el) => observer.observe(el));
-        observer.observe(skillsSection);
-      });
+        if (skillsSection) observer.observe(skillsSection);
 
-      document.getElementById("downloadCvBtn").addEventListener("click", () => {
-        const link = document.createElement("a");
-        link.href = "assets/ScheezaAhmad.pdf"; // Relative path to your PDF
+        // ✅ Active Navbar Link Highlight for Multi-Page Navigation
+        const navLinks = document.querySelectorAll(".nav-link");
+        const currentPage = window.location.pathname.split("/").pop();
 
-        link.download = "Scheeza_Ahmad_CV.pdf";
-        link.click();
+        navLinks.forEach((link) => {
+          const linkPage = link.getAttribute("href");
+          if (
+            linkPage === currentPage ||
+            (linkPage === "index.html" && currentPage === "")
+          ) {
+            link.classList.add("active");
+          } else {
+            link.classList.remove("active");
+          }
+        });
+
+        // ✅ Download CV Button
+        const downloadCvBtn = document.getElementById("downloadCvBtn");
+        if (downloadCvBtn) {
+          downloadCvBtn.addEventListener("click", () => {
+            const link = document.createElement("a");
+            link.href = "assets/ScheezaAhmad.pdf"; // ✅ Path to your CV
+            link.download = "Scheeza_Ahmad_CV.pdf";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          });
+        }
       });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>

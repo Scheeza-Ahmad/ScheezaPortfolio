@@ -33,8 +33,13 @@
       }
 
       .navbar-brand {
-        font-size: 22px;
+        font-size: 18px;
+        white-space: normal; /* allows breaking into two lines */
+        line-height: 1.2;
         color: #ffffff !important;
+      }
+      .navbar-toggler {
+        border: none;
       }
 
       .navbar-nav .nav-link {
@@ -313,20 +318,29 @@
   </head>
   <body>
     <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg fixed-top p-4">
-      <a class="navbar-brand fw-bold ps-3" href="/">
-        Scheeza Ahmad
-        <span class="fw-normal" style="font-size: 16px"> / WEB DEVELOPER</span>
-      </a>
-      <button
-        class="navbar-toggler bg-light"
-        type="button"
-        data-bs-toggle="offcanvas"
-        data-bs-target="#navbarOffcanvasLg"
-        aria-controls="navbarOffcanvasLg"
+    <nav class="navbar navbar-expand-lg fixed-top p-3">
+      <div
+        class="container-fluid d-flex justify-content-between align-items-center"
       >
-        <span class="navbar-toggler-icon"></span>
-      </button>
+        <!-- Brand -->
+        <a class="navbar-brand fw-bold mb-0" href="/" style="line-height: 1.2">
+          Scheeza Ahmad<br />
+          <span class="fw-normal" style="font-size: 14px">/ WEB DEVELOPER</span>
+        </a>
+
+        <!-- Hamburger -->
+        <button
+          class="navbar-toggler bg-light"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#navbarOffcanvasLg"
+          aria-controls="navbarOffcanvasLg"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+
+      <!-- Offcanvas Menu -->
       <div
         class="offcanvas offcanvas-end bg-dark text-white"
         tabindex="-1"
@@ -471,11 +485,12 @@
     </footer>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
+        // ✅ Scroll Animation Logic
         const animatedElements = document.querySelectorAll(
           ".fade-in, .scale-up-tl, .tracking-in-expand-fwd, .shadow-drop-2-center, .shadow-inset-center, .text-shadow-drop-center"
         );
 
-        // Remove animation classes initially
+        // Hide initially
         animatedElements.forEach((el) => {
           el.classList.add("invisible"); // add invisible style
         });
@@ -494,6 +509,19 @@
         );
 
         animatedElements.forEach((el) => observer.observe(el));
+
+        // ✅ Navbar Active Link Logic
+        const navLinks = document.querySelectorAll(".nav-link");
+        const currentPage = window.location.pathname.split("/").pop();
+
+        navLinks.forEach((link) => {
+          const linkPage = link.getAttribute("href");
+          if (linkPage === currentPage) {
+            link.classList.add("active");
+          } else {
+            link.classList.remove("active");
+          }
+        });
       });
     </script>
 

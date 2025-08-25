@@ -31,8 +31,13 @@
       }
 
       .navbar-brand {
-        font-size: 22px;
+        font-size: 18px;
+        white-space: normal; /* allows breaking into two lines */
+        line-height: 1.2;
         color: #ffffff !important;
+      }
+      .navbar-toggler {
+        border: none;
       }
 
       .navbar-nav .nav-link {
@@ -237,24 +242,62 @@
       footer i:hover {
         color: var(--accent);
       }
+            @-webkit-keyframes shadow-drop-2-center {
+        0% {
+          -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+          -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+          box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+        }
+        100% {
+          -webkit-transform: translateZ(50px);
+          transform: translateZ(50px);
+          -webkit-box-shadow: 0 0 20px 0 #00aaff;
+          box-shadow: 0 0 20px 0 #00aaff;
+        }
+      }
+      @keyframes shadow-drop-2-center {
+        0% {
+          transform: translateZ(0);
+          box-shadow: 0 0 0 0 #00aaff;
+        }
+        100% {
+          transform: translateZ(50px);
+          box-shadow: 0 0 20px 0 #00aaff;
+        }
+      }
+      .shadow-drop-2-center {
+        animation: shadow-drop-2-center 0.4s
+          cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+      }
+
     </style>
   </head>
   <body>
     <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg fixed-top p-4">
-      <a class="navbar-brand fw-bold ps-3" href="/">
-        Scheeza Ahmad
-        <span class="fw-normal" style="font-size: 16px"> / WEB DEVELOPER</span>
-      </a>
-      <button
-        class="navbar-toggler bg-light"
-        type="button"
-        data-bs-toggle="offcanvas"
-        data-bs-target="#navbarOffcanvasLg"
-        aria-controls="navbarOffcanvasLg"
+    <nav class="navbar navbar-expand-lg fixed-top p-3">
+      <div
+        class="container-fluid d-flex justify-content-between align-items-center"
       >
-        <span class="navbar-toggler-icon"></span>
-      </button>
+        <!-- Brand -->
+        <a class="navbar-brand fw-bold mb-0" href="/" style="line-height: 1.2">
+          Scheeza Ahmad<br />
+          <span class="fw-normal" style="font-size: 14px">/ WEB DEVELOPER</span>
+        </a>
+
+        <!-- Hamburger -->
+        <button
+          class="navbar-toggler bg-light"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#navbarOffcanvasLg"
+          aria-controls="navbarOffcanvasLg"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+
+      <!-- Offcanvas Menu -->
       <div
         class="offcanvas offcanvas-end bg-dark text-white"
         tabindex="-1"
@@ -289,7 +332,7 @@
 
     <!-- MAIN -->
     <main>
-      <div class="container">
+      <div class="container shadow-drop-2-center">
         <!-- Profile Card -->
         <div class="card">
           <h2>Scheeza Ahmad</h2>
