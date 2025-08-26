@@ -393,31 +393,16 @@
         transform: scale(1.04);
       }
       .slide-top {
-        -webkit-animation: slide-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-          both;
-        animation: slide-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
       }
 
-      @-webkit-keyframes slide-top {
-        0% {
-          -webkit-transform: translateY(0);
-          transform: translateY(0);
-        }
-        100% {
-          -webkit-transform: translateY(-100px);
-          transform: translateY(-100px);
-        }
+      .slide-top.animate-active {
+        opacity: 1;
+        transform: translateY(0);
       }
-      @keyframes slide-top {
-        0% {
-          -webkit-transform: translateY(0);
-          transform: translateY(0);
-        }
-        100% {
-          -webkit-transform: translateY(-100px);
-          transform: translateY(-100px);
-        }
-      }
+
       .animate-on-scroll {
         opacity: 0;
         transform: translateY(50px); /* start position */
@@ -763,11 +748,11 @@
     </footer>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        // ✅ Skills & Animation Observer
         const skillsSection = document.querySelector(".skills-container");
         const progressBars = document.querySelectorAll(".progress");
-        const animatedElements =
-          document.querySelectorAll(".animate-on-scroll");
+        const animatedElements = document.querySelectorAll(
+          ".animate-on-scroll, .slide-top"
+        ); // ✅ include slide-top
 
         const options = { root: null, threshold: 0.2 };
 
@@ -790,7 +775,6 @@
         }, options);
 
         animatedElements.forEach((el) => observer.observe(el));
-        if (skillsSection) observer.observe(skillsSection);
 
         // ✅ Active Navbar Link Highlight for Multi-Page Navigation
         const navLinks = document.querySelectorAll(".nav-link");
@@ -813,7 +797,7 @@
         if (downloadCvBtn) {
           downloadCvBtn.addEventListener("click", () => {
             const link = document.createElement("a");
-            link.href = "assets/ScheezaAhmad.pdf"; // ✅ Path to your CV
+            link.href = "assets/ScheezaAhmad.pdf";
             link.download = "Scheeza_Ahmad_CV.pdf";
             document.body.appendChild(link);
             link.click();
